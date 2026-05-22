@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+<title>Rajput Tours & Travels — Premium Fleet | All India Tours | Burhanpur</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --gold: #C9A84C;
+    --gold-light: #E8D08A;
+    --gold-dark: #8B6914;
+    --cream: #FAF5EC;
+    --cream-dark: #F0E8D5;
+    --dark: #1A1208;
+    --dark2: #2C1F0A;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: 'Jost', sans-serif; background: var(--dark); color: var(--cream); overflow-x: hidden; }
+
+  /* CUSTOM CURSOR */
+  * { cursor: none; }
+  #cursor { width: 12px; height: 12px; border-radius: 50%; background: var(--gold); position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9999; transform: translate(-50%,-50%); transition: transform 0.1s, width 0.3s, height 0.3s; mix-blend-mode: difference; }
+  #cursor-ring { width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--gold); position: fixed; top: 0; left: 0; pointer-events: none; z-index: 9998; transform: translate(-50%,-50%); transition: transform 0.15s ease-out; opacity: 0.6; }
+
+  /* NAVIGATION */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; padding: 1.5rem 4rem; display: flex; align-items: center; justify-content: space-between; background: linear-gradient(to bottom, rgba(26,18,8,0.95), transparent); transition: background 0.4s; }
+  nav.scrolled { background: rgba(26,18,8,0.98); border-bottom: 1px solid rgba(201,168,76,0.2); }
+  .nav-logo { font-family: 'Cinzel', serif; font-size: 1.3rem; color: var(--gold); letter-spacing: 0.08em; text-decoration: none; display: flex; flex-direction: column; line-height: 1.1; }
+  .nav-logo span { font-size: 0.6rem; letter-spacing: 0.3em; color: var(--gold-light); font-family: 'Jost', sans-serif; font-weight: 300; text-transform: uppercase; margin-top: 3px; }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { color: var(--cream); text-decoration: none; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 300; position: relative; opacity: 0.85; transition: opacity 0.3s, color 0.3s; }
+  .nav-links a::after { content: ''; position: absolute; bottom: -4px; left: 0; right: 0; height: 1px; background: var(--gold); transform: scaleX(0); transform-origin: right; transition: transform 0.3s ease; }
+  .nav-links a:hover { opacity: 1; color: var(--gold-light); }
+  .nav-links a:hover::after { transform: scaleX(1); transform-origin: left; }
+  .nav-cta { background: transparent; border: 1px solid var(--gold); color: var(--gold); padding: 0.55rem 1.5rem; font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: background 0.3s, color 0.3s; }
+  .nav-cta:hover { background: var(--gold); color: var(--dark); }
+
+  /* HERO SECTION */
+  .hero { height: 100vh; min-height: 700px; position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
+  .hero-bg { position: absolute; inset: 0; background: radial-gradient(ellipse at 30% 50%, rgba(201,168,76,0.08) 0%, transparent 60%), radial-gradient(ellipse at 80% 20%, rgba(201,168,76,0.05) 0%, transparent 50%), linear-gradient(160deg, #1A1208 0%, #2C1F0A 40%, #1A1208 100%); }
+  .hero-pattern { position: absolute; inset: 0; opacity: 0.04; background-image: repeating-linear-gradient(45deg, var(--gold) 0, var(--gold) 1px, transparent 0, transparent 50%); background-size: 30px 30px; }
+  .hero-ornament { position: absolute; width: 600px; height: 600px; border: 1px solid rgba(201,168,76,0.12); border-radius: 50%; top: 50%; left: 50%; transform: translate(-50%,-50%); animation: rotate-slow 40s linear infinite; }
+  .hero-ornament::before { content: ''; position: absolute; inset: 30px; border: 1px solid rgba(201,168,76,0.08); border-radius: 50%; animation: rotate-slow 25s linear infinite reverse; }
+  .hero-ornament::after { content: ''; position: absolute; inset: 60px; border: 1px dashed rgba(201,168,76,0.06); border-radius: 50%; }
+  @keyframes rotate-slow { to { transform: translate(-50%,-50%) rotate(360deg); } }
+  .hero-content { position: relative; z-index: 2; text-align: center; max-width: 900px; padding: 0 2rem; }
+  .hero-badge { display: inline-block; font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); border: 1px solid rgba(201,168,76,0.4); padding: 0.4rem 1.5rem; margin-bottom: 2rem; animation: fadeUp 1s ease 0.2s both; }
+  .hero-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(3.5rem, 8vw, 7rem); font-weight: 300; line-height: 0.95; color: var(--cream); letter-spacing: -0.02em; animation: fadeUp 1s ease 0.4s both; }
+  .hero-title em { font-style: italic; color: var(--gold); display: block; }
+  .hero-sub { font-size: 0.9rem; letter-spacing: 0.15em; color: var(--cream); opacity: 0.6; margin: 1.5rem 0 2.5rem; font-weight: 300; animation: fadeUp 1s ease 0.6s both; }
+  .hero-btns { display: flex; gap: 1.2rem; justify-content: center; flex-wrap: wrap; animation: fadeUp 1s ease 0.8s both; }
+  .btn-primary { background: var(--gold); color: var(--dark); padding: 0.9rem 2.5rem; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; border: none; font-family: 'Jost', sans-serif; font-weight: 500; text-decoration: none; display: inline-block; transition: background 0.3s, transform 0.2s; cursor: pointer; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+  .btn-ghost { background: transparent; color: var(--cream); padding: 0.9rem 2.5rem; font-size: 0.8rem; letter-spacing: 0.2em; text-transform: uppercase; border: 1px solid rgba(250,245,236,0.3); font-family: 'Jost', sans-serif; font-weight: 300; text-decoration: none; display: inline-block; transition: border-color 0.3s, color 0.3s; }
+  .btn-ghost:hover { border-color: var(--gold); color: var(--gold-light); }
+  .hero-scroll { position: absolute; bottom: 2.5rem; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 0.5rem; color: var(--gold); opacity: 0.6; font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; animation: fadeUp 1s ease 1.2s both; }
+  .scroll-line { width: 1px; height: 50px; background: linear-gradient(to bottom, var(--gold), transparent); animation: scroll-anim 2s ease infinite; }
+  @keyframes scroll-anim { 0%{transform:scaleY(0);transform-origin:top;opacity:1} 50%{transform:scaleY(1);transform-origin:top;opacity:1} 100%{transform:scaleY(1);transform-origin:bottom;opacity:0} }
+  @keyframes fadeUp { from{opacity:0;transform:translateY(30px)} to{opacity:1;transform:translateY(0)} }
+
+  /* SECTION BASE */
+  .section-label { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--gold); display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem; }
+  .section-label::before, .section-label::after { content: ''; height: 1px; background: var(--gold); opacity: 0.4; flex: 0 0 30px; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.5rem); font-weight: 300; line-height: 1.1; color: var(--cream); letter-spacing: -0.01em; }
+  .section-title em { font-style: italic; color: var(--gold); }
+
+  /* STATS BAR */
+  .stats-bar { background: var(--gold); padding: 2rem 4rem; display: grid; grid-template-columns: repeat(4,1fr); text-align: center; gap: 1px; }
+  .stat-item { padding: 0.5rem 1rem; }
+  .stat-num { font-family: 'Cormorant Garamond', serif; font-size: 2.8rem; font-weight: 600; color: var(--dark); line-height: 1; }
+  .stat-label { font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dark); opacity: 0.7; margin-top: 0.3rem; font-weight: 300; }
+
+  /* DESTINATIONS */
+  .destinations { padding: 7rem 4rem; background: var(--dark2); }
+  .destinations-header { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 4rem; }
+  .dest-grid { display: grid; grid-template-columns: repeat(3,1fr); grid-template-rows: auto auto; gap: 1.5px; }
+  .dest-card { position: relative; overflow: hidden; height: 420px; background: var(--dark); }
+  .dest-card.large { grid-column: span 2; }
+  .dest-img-bg { width: 100%; height: 100%; background-size: cover; background-position: center; filter: brightness(0.5) saturate(0.8); transition: transform 0.8s ease, filter 0.5s; }
+  .dest-card:hover .dest-img-bg { transform: scale(1.06); filter: brightness(0.65) saturate(0.9); }
+  .dest-overlay { position: absolute; inset: 0; background: linear-gradient(to top, rgba(26,18,8,0.9) 0%, transparent 60%); }
+  .dest-info { position: absolute; bottom: 0; left: 0; right: 0; padding: 2rem; transform: translateY(30px); transition: transform 0.4s ease; }
+  .dest-card:hover .dest-info { transform: translateY(0); }
+  .dest-region { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.4rem; opacity: 0; transition: opacity 0.4s 0.1s; }
+  .dest-card:hover .dest-region { opacity: 1; }
+  .dest-name { font-family: 'Cormorant Garamond', serif; font-size: 2rem; font-weight: 300; color: var(--cream); line-height: 1.1; }
+  .dest-meta { font-size: 0.75rem; color: var(--cream); opacity: 0.6; margin-top: 0.5rem; letter-spacing: 0.05em; }
+
+  /* FLEET SECTION */
+  .fleet { padding: 7rem 4rem; background: var(--dark); }
+  .fleet-intro { max-width: 600px; font-size: 0.9rem; color: var(--cream); opacity: 0.55; line-height: 1.9; font-weight: 300; margin-top: 1rem; }
+  .fleet-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2rem; margin-top: 4rem; background: transparent; }
+  .fleet-card { background: var(--dark2); padding: 2rem 1.8rem; position: relative; overflow: hidden; border: 1px solid rgba(201,168,76,0.15); border-radius: 4px; transition: transform 0.3s ease, box-shadow 0.3s, border-color 0.4s; backdrop-filter: blur(2px); }
+  .fleet-card:hover { transform: translateY(-6px); border-color: var(--gold); box-shadow: 0 20px 30px -12px rgba(0,0,0,0.4); background: #2F2410; }
+  .fleet-vehicle-img { width: 100%; height: 170px; object-fit: cover; border-radius: 6px; margin-bottom: 1.5rem; background: #1A1308; border: 1px solid rgba(201,168,76,0.2); transition: transform 0.4s ease; }
+  .fleet-card:hover .fleet-vehicle-img { transform: scale(1.02); border-color: var(--gold); }
+  .fleet-badge { font-size: 0.58rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.12); border: 1px solid rgba(201,168,76,0.25); padding: 0.25rem 0.7rem; display: inline-block; margin-bottom: 1rem; border-radius: 20px; }
+  .fleet-name { font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; font-weight: 400; color: var(--cream); margin-bottom: 0.3rem; line-height: 1.1; }
+  .fleet-sub { font-size: 0.72rem; color: var(--gold-light); opacity: 0.7; font-weight: 300; letter-spacing: 0.1em; margin-bottom: 1.2rem; }
+  .fleet-features { list-style: none; margin: 1rem 0; }
+  .fleet-features li { font-size: 0.8rem; color: var(--cream); opacity: 0.6; padding: 0.35rem 0; padding-left: 1rem; position: relative; font-weight: 300; border-bottom: 1px solid rgba(201,168,76,0.06); }
+  .fleet-features li::before { content: '✦'; position: absolute; left: 0; color: var(--gold); font-size: 0.45rem; top: 0.5rem; opacity: 0.7; }
+  .fleet-enquire { display: inline-block; margin-top: 1.2rem; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); text-decoration: none; border-bottom: 1px solid rgba(201,168,76,0.4); padding-bottom: 3px; transition: border-color 0.3s; cursor: pointer; }
+  .fleet-enquire:hover { border-color: var(--gold); color: var(--gold-light); }
+
+  /* SERVICES */
+  .experiences { padding: 7rem 4rem; background: var(--dark2); }
+  .exp-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 2px; margin-top: 4rem; }
+  .exp-card { padding: 3rem 2.5rem; border: 1px solid rgba(201,168,76,0.1); position: relative; overflow: hidden; transition: border-color 0.4s; background: rgba(0,0,0,0.2); }
+  .exp-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: var(--gold); transform: scaleX(0); transform-origin: left; transition: transform 0.5s ease; }
+  .exp-card:hover { border-color: rgba(201,168,76,0.3); background: rgba(201,168,76,0.02); }
+  .exp-card:hover::before { transform: scaleX(1); }
+  .exp-icon { font-size: 2rem; margin-bottom: 1.5rem; display: block; color: var(--gold); opacity: 0.8; font-family: serif; }
+  .exp-num { font-family: 'Cormorant Garamond', serif; font-size: 4rem; font-weight: 300; color: rgba(201,168,76,0.08); position: absolute; top: 1rem; right: 1.5rem; line-height: 1; }
+  .exp-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 400; color: var(--cream); margin-bottom: 0.8rem; line-height: 1.2; }
+  .exp-desc { font-size: 0.85rem; color: var(--cream); opacity: 0.55; line-height: 1.8; font-weight: 300; }
+
+  /* PACKAGES */
+  .packages { padding: 7rem 4rem; background: var(--dark); }
+  .pkg-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1px; margin-top: 4rem; background: rgba(201,168,76,0.1); }
+  .pkg-card { background: var(--dark); padding: 2.5rem; position: relative; transition: background 0.4s; }
+  .pkg-card.featured { background: #231809; }
+  .pkg-tag { font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.2); padding: 0.3rem 0.8rem; display: inline-block; margin-bottom: 1.5rem; }
+  .pkg-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--cream); margin-bottom: 0.5rem; }
+  .pkg-duration { font-size: 0.75rem; color: var(--gold); letter-spacing: 0.1em; margin-bottom: 1.5rem; }
+  .pkg-highlights { list-style: none; margin-bottom: 2rem; }
+  .pkg-highlights li { font-size: 0.82rem; color: var(--cream); opacity: 0.6; padding: 0.4rem 0; border-bottom: 1px solid rgba(201,168,76,0.08); padding-left: 1rem; position: relative; font-weight: 300; }
+  .pkg-highlights li::before { content: '—'; position: absolute; left: 0; color: var(--gold); opacity: 0.5; }
+  .pkg-enquire-note { font-size: 0.75rem; color: var(--cream); opacity: 0.4; font-style: italic; margin-bottom: 1.2rem; font-family: 'Cormorant Garamond', serif; }
+
+  /* TESTIMONIALS */
+  .testimonials { padding: 7rem 4rem; background: var(--dark2); }
+  .test-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-top: 4rem; background: rgba(201,168,76,0.1); }
+  .test-card { background: var(--dark2); padding: 3rem; position: relative; }
+  .test-quote { font-family: 'Cormorant Garamond', serif; font-size: 4rem; color: var(--gold); opacity: 0.2; line-height: 0.5; margin-bottom: 1rem; }
+  .test-text { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; font-weight: 300; font-style: italic; color: var(--cream); opacity: 0.8; line-height: 1.7; margin-bottom: 1.5rem; }
+  .test-author { display: flex; align-items: center; gap: 1rem; }
+  .test-avatar { width: 44px; height: 44px; border-radius: 50%; background: rgba(201,168,76,0.15); border: 1px solid var(--gold); display: flex; align-items: center; justify-content: center; font-family: 'Cinzel', serif; font-size: 0.9rem; color: var(--gold); }
+  .test-name { font-size: 0.85rem; color: var(--cream); font-weight: 500; letter-spacing: 0.05em; }
+  .test-loc { font-size: 0.7rem; color: var(--cream); opacity: 0.4; letter-spacing: 0.15em; text-transform: uppercase; }
+  .test-stars { color: var(--gold); font-size: 0.75rem; letter-spacing: 0.1em; }
+
+  /* WHY US */
+  .why { padding: 7rem 4rem; background: var(--gold); display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: center; }
+  .why-left .section-label { color: var(--dark); }
+  .why-left .section-label::before, .why-left .section-label::after { background: var(--dark); }
+  .why-left .section-title { color: var(--dark); }
+  .why-left p { font-size: 0.9rem; color: var(--dark); opacity: 0.7; line-height: 1.9; font-weight: 300; margin-top: 1.5rem; }
+  .why-features { display: flex; flex-direction: column; gap: 0.5px; }
+  .why-feat { display: grid; grid-template-columns: 3rem 1fr; gap: 1.5rem; align-items: start; padding: 1.5rem; background: rgba(26,18,8,0.06); transition: background 0.3s; }
+  .why-feat:hover { background: rgba(26,18,8,0.12); }
+  .why-feat-icon { width: 3rem; height: 3rem; border: 1px solid rgba(26,18,8,0.2); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+  .why-feat-title { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: var(--dark); font-weight: 600; margin-bottom: 0.3rem; }
+  .why-feat-desc { font-size: 0.8rem; color: var(--dark); opacity: 0.65; font-weight: 300; line-height: 1.6; }
+
+  /* CONTACT */
+  .contact { padding: 7rem 4rem; background: var(--dark2); display: grid; grid-template-columns: 1fr 1.2fr; gap: 6rem; align-items: start; }
+  .contact-info-item { display: flex; gap: 1.5rem; align-items: flex-start; padding: 1.5rem 0; border-bottom: 1px solid rgba(201,168,76,0.1); }
+  .contact-info-icon { font-size: 1.2rem; color: var(--gold); opacity: 0.7; flex-shrink: 0; margin-top: 0.1rem; }
+  .contact-info-label { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); opacity: 0.7; margin-bottom: 0.3rem; }
+  .contact-info-val { font-size: 0.9rem; color: var(--cream); font-weight: 300; line-height: 1.5; }
+  .contact-form { display: flex; flex-direction: column; gap: 1px; background: rgba(201,168,76,0.08); border: 1px solid rgba(201,168,76,0.2); }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; }
+  .form-field { position: relative; background: var(--dark2); }
+  .form-field label { position: absolute; top: 1rem; left: 1.5rem; font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--gold); opacity: 0.6; pointer-events: none; }
+  .form-field input, .form-field select, .form-field textarea { width: 100%; background: transparent; border: none; padding: 2rem 1.5rem 0.8rem; font-family: 'Jost', sans-serif; font-size: 0.9rem; color: var(--cream); outline: none; font-weight: 300; }
+  .form-field select option { background: var(--dark2); color: var(--cream); }
+  .form-field textarea { resize: none; height: 120px; }
+  .form-submit { background: var(--gold); color: var(--dark); border: none; padding: 1.2rem; font-family: 'Jost', sans-serif; font-size: 0.8rem; letter-spacing: 0.3em; text-transform: uppercase; font-weight: 500; transition: background 0.3s; cursor: pointer; }
+  .form-submit:hover { background: var(--gold-light); }
+
+  /* FOOTER */
+  footer { background: var(--dark); border-top: 1px solid rgba(201,168,76,0.15); padding: 4rem 4rem 2rem; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(201,168,76,0.1); margin-bottom: 2rem; }
+  .footer-logo { font-family: 'Cinzel', serif; font-size: 1.4rem; color: var(--gold); letter-spacing: 0.08em; display: block; margin-bottom: 1rem; }
+  .footer-desc { font-size: 0.82rem; color: var(--cream); opacity: 0.4; line-height: 1.8; font-weight: 300; max-width: 260px; }
+  .footer-col h4 { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--gold); margin-bottom: 1.2rem; font-weight: 400; }
+  .footer-col ul { list-style: none; }
+  .footer-col li { margin-bottom: 0.6rem; }
+  .footer-col a { font-size: 0.82rem; color: var(--cream); opacity: 0.5; text-decoration: none; font-weight: 300; transition: opacity 0.3s, color 0.3s; }
+  .footer-col a:hover { opacity: 1; color: var(--gold-light); }
+  .footer-bottom { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; }
+  .footer-copy { font-size: 0.72rem; color: var(--cream); opacity: 0.3; letter-spacing: 0.05em; font-weight: 300; }
+  .footer-socials { display: flex; gap: 1.2rem; }
+  .social-link { width: 36px; height: 36px; border: 1px solid rgba(201,168,76,0.2); display: flex; align-items: center; justify-content: center; color: var(--gold); text-decoration: none; font-size: 0.8rem; transition: border-color 0.3s, background 0.3s; }
+  .social-link:hover { border-color: var(--gold); background: rgba(201,168,76,0.1); }
+
+  /* REVEAL ANIMATION */
+  .reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.8s ease, transform 0.8s ease; }
+  .reveal.visible { opacity: 1; transform: none; }
+  .reveal-delay-1 { transition-delay: 0.15s; }
+  .reveal-delay-2 { transition-delay: 0.3s; }
+
+  /* WHATSAPP FLOAT */
+  .wa-float {
+    position: fixed; bottom: 30px; right: 30px; z-index: 999;
+    width: 56px; height: 56px; background: #25D366; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px; box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+    text-decoration: none; transition: all 0.3s; animation: pulse 2s infinite;
+    cursor: pointer !important;
+  }
+  .wa-float:hover { transform: scale(1.1); }
+  @keyframes pulse { 0%,100%{box-shadow:0 4px 20px rgba(37,211,102,0.4)} 50%{box-shadow:0 4px 30px rgba(37,211,102,0.7)} }
+
+  @media (max-width: 900px) {
+    nav { padding: 1.2rem 1.5rem; }
+    .nav-links { display: none; }
+    .stats-bar { grid-template-columns: repeat(2,1fr); padding: 2rem 1.5rem; }
+    .destinations, .fleet, .experiences, .packages, .testimonials, .contact { padding: 4rem 1.5rem; }
+    .dest-grid { grid-template-columns: 1fr; }
+    .dest-card.large { grid-column: span 1; }
+    .dest-card { height: 280px; }
+    .fleet-grid, .exp-grid, .pkg-grid, .test-grid { grid-template-columns: 1fr; }
+    .why { grid-template-columns: 1fr; padding: 4rem 1.5rem; gap: 3rem; }
+    .contact { grid-template-columns: 1fr; }
+    .form-row { grid-template-columns: 1fr; }
+    .footer-top { grid-template-columns: 1fr 1fr; }
+    footer { padding: 3rem 1.5rem 1.5rem; }
+    .fleet-grid { gap: 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<div id="cursor"></div>
+<div id="cursor-ring"></div>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">
+    Rajput Tours & Travels
+    <span>All India Tours · Burhanpur</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="#destinations">Destinations</a></li>
+    <li><a href="#fleet">Our Fleet</a></li>
+    <li><a href="#experiences">Services</a></li>
+    <li><a href="#packages">Packages</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Book Now</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-bg"></div><div class="hero-pattern"></div><div class="hero-ornament"></div>
+  <div class="hero-content">
+    <div class="hero-badge">✦ All India Tours — We Go Everywhere ✦</div>
+    <h1 class="hero-title">Explore India <em>With Your Own Vehicle</em></h1>
+    <p class="hero-sub">Your own car, your own driver, your own route — Rajput Tours makes it happen</p>
+    <div class="hero-btns">
+      <a href="#fleet" class="btn-primary">View Our Fleet</a>
+      <a href="#destinations" class="btn-ghost">Destinations</a>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll<div class="scroll-line"></div></div>
+</section>
+
+<div class="stats-bar">
+  <div class="stat-item"><div class="stat-num">18+</div><div class="stat-label">Years of Service</div></div>
+  <div class="stat-item"><div class="stat-num">12K+</div><div class="stat-label">Happy Travellers</div></div>
+  <div class="stat-item"><div class="stat-num">All India</div><div class="stat-label">Coverage</div></div>
+  <div class="stat-item"><div class="stat-num">98%</div><div class="stat-label">Satisfaction Rate</div></div>
+</div>
+
+<section class="destinations" id="destinations">
+  <div class="destinations-header reveal">
+    <div><div class="section-label">All Across India</div><h2 class="section-title">Where do you <em>want to go?</em></h2></div>
+    <a href="#contact" class="btn-ghost">Enquire Now →</a>
+  </div>
+  <div class="dest-grid">
+    <div class="dest-card large reveal"><div class="dest-img-bg" style="background-image:url('images/udaipur.jpeg');"></div><div class="dest-overlay"></div><div class="dest-info"><div class="dest-region">Rajasthan</div><div class="dest-name">Udaipur</div><div class="dest-meta">City of Lakes · Heritage Capital</div></div></div>
+    <div class="dest-card reveal reveal-delay-1"><div class="dest-img-bg" style="background-image:url('images/jaipur.jpeg');"></div><div class="dest-overlay"></div><div class="dest-info"><div class="dest-region">Rajasthan</div><div class="dest-name">Jaipur</div><div class="dest-meta">Pink City · Amer Fort</div></div></div>
+    <div class="dest-card reveal reveal-delay-1"><div class="dest-img-bg" style="background-image:url('images/agra.jpeg');"></div><div class="dest-overlay"></div><div class="dest-info"><div class="dest-region">Uttar Pradesh</div><div class="dest-name">Agra</div><div class="dest-meta">Taj Mahal · Agra Fort</div></div></div>
+    <div class="dest-card reveal reveal-delay-2"><div class="dest-img-bg" style="background-image:url('images/khajuraho.jpeg');"></div><div class="dest-overlay"></div><div class="dest-info"><div class="dest-region">Madhya Pradesh</div><div class="dest-name">Khajuraho</div><div class="dest-meta">UNESCO Heritage · Temples</div></div></div>
+    <div class="dest-card reveal reveal-delay-2"><div class="dest-img-bg" style="background-image:url('images/rishikesh.jpeg');"></div><div class="dest-overlay"></div><div class="dest-info"><div class="dest-region">Uttarakhand</div><div class="dest-name">Rishikesh</div><div class="dest-meta">Spiritual Gateway · Ganges</div></div></div>
+  </div>
+</section>
+
+<section class="fleet" id="fleet">
+  <div class="section-label reveal">Our Fleet</div>
+  <h2 class="section-title reveal">Choose <em>Your Perfect Ride</em></h2>
+  <p class="fleet-intro reveal">AC vehicles, trained drivers, and all-India service. Whether you're 2 people or 23 — we have the perfect vehicle for your group.</p>
+  <div class="fleet-grid">
+    <div class="fleet-card reveal">
+      <img class="fleet-vehicle-img" src="images/dzire.jpeg" alt="Swift Dzire Sedan">
+      <div class="fleet-badge">4 Seater · Sedan</div>
+      <div class="fleet-name">Swift Dzire</div>
+      <div class="fleet-sub">Couples & Small Family Travel</div>
+      <ul class="fleet-features">
+        <li>Full AC · Comfortable Sedan</li>
+        <li>Honeymoon & City Tours</li>
+        <li>Airport Transfers</li>
+        <li>Outstation — All India</li>
+        <li>Experienced Driver</li>
+      </ul>
+      <a class="fleet-enquire" onclick="sendFleetEnquiry('Swift Dzire')">Enquire Now →</a>
+    </div>
+    <div class="fleet-card reveal reveal-delay-1">
+      <img class="fleet-vehicle-img" src="images/ertiga.jpeg" alt="Maruti Ertiga SUV">
+      <div class="fleet-badge">7 Seater · SUV</div>
+      <div class="fleet-name">Maruti Ertiga</div>
+      <div class="fleet-sub">Family & Group Travel</div>
+      <ul class="fleet-features">
+        <li>Full AC · Spacious Cabin</li>
+        <li>Family Tours · Luggage Space</li>
+        <li>Comfortable Long Distance</li>
+        <li>Hill Stations · Highways</li>
+        <li>Professional Driver</li>
+      </ul>
+      <a class="fleet-enquire" onclick="sendFleetEnquiry('Maruti Ertiga')">Enquire Now →</a>
+    </div>
+    <div class="fleet-card reveal reveal-delay-2">
+      <img class="fleet-vehicle-img" src="images/crusier.jpeg" alt="Toofan Cruiser">
+      <div class="fleet-badge">13 Seater</div>
+      <div class="fleet-name">Toofan Cruiser</div>
+      <div class="fleet-sub">Premium Group Travel</div>
+      <ul class="fleet-features">
+        <li>Premium Interior</li>
+        <li>Corporate & VIP Groups</li>
+        <li>Maximum Comfort</li>
+        <li>All Terrain Capable</li>
+        <li>Senior Driver — Long Routes</li>
+      </ul>
+      <a class="fleet-enquire" onclick="sendFleetEnquiry('Toofan Cruiser')">Enquire Now →</a>
+    </div>
+    <div class="fleet-card reveal reveal-delay-1">
+      <img class="fleet-vehicle-img" src="images/17Seater.jpeg" alt="17 Seater Traveller">
+      <div class="fleet-badge">17 Seater · Traveller</div>
+      <div class="fleet-name">17 Seater Traveller</div>
+      <div class="fleet-sub">Large Group & Pilgrimage</div>
+      <ul class="fleet-features">
+        <li>Full AC · Reclining Seats</li>
+        <li>Pilgrimage Tours — Char Dham</li>
+        <li>Wedding Baraat Groups</li>
+        <li>College & Office Trips</li>
+        <li>Driver + Attendant</li>
+      </ul>
+      <a class="fleet-enquire" onclick="sendFleetEnquiry('17 Seater Traveller')">Enquire Now →</a>
+    </div>
+    <div class="fleet-card reveal reveal-delay-2">
+      <img class="fleet-vehicle-img" src="images/urbania.jpeg" alt="23 Seater Coach">
+      <div class="fleet-badge">23 Seater · Coach</div>
+      <div class="fleet-name">23 Seater Traveller</div>
+      <div class="fleet-sub">Large Groups & Events</div>
+      <ul class="fleet-features">
+        <li>Full AC · Luxury Push-Back</li>
+        <li>Corporate Events & Conferences</li>
+        <li>Religious Yatras</li>
+        <li>Full India Coverage</li>
+        <li>Driver + Helper Staff</li>
+      </ul>
+      <a class="fleet-enquire" onclick="sendFleetEnquiry('23 Seater Traveller')">Enquire Now →</a>
+    </div>
+  </div>
+</section>
+
+<section class="experiences" id="experiences">
+  <div class="section-label reveal">Our Services</div>
+  <h2 class="section-title reveal" style="max-width:600px;">What do <em>you need?</em></h2>
+  <div class="exp-grid">
+    <div class="exp-card reveal"><span class="exp-num">01</span><div class="exp-icon">🏰</div><h3 class="exp-title">Heritage & Rajasthan Tours</h3><p class="exp-desc">Jaipur, Jodhpur, Udaipur, Jaisalmer — royal journey through Rajasthan. Forts, palaces, desert safari included.</p></div>
+    <div class="exp-card reveal reveal-delay-1"><span class="exp-num">02</span><div class="exp-icon">🕉️</div><h3 class="exp-title">Pilgrimage Tours</h3><p class="exp-desc">Char Dham, Kashi, Mathura-Vrindavan, Shirdi — complete pilgrimage tours.</p></div>
+    <div class="exp-card reveal reveal-delay-2"><span class="exp-num">03</span><div class="exp-icon">🏔️</div><h3 class="exp-title">Hill Station Tours</h3><p class="exp-desc">Shimla, Manali, Mussoorie, Nainital, Ooty — cool mountain breeze.</p></div>
+    <div class="exp-card reveal"><span class="exp-num">04</span><div class="exp-icon">🌊</div><h3 class="exp-title">Beach Destinations</h3><p class="exp-desc">Goa, Pondicherry, Andaman — memorable beach trips.</p></div>
+    <div class="exp-card reveal reveal-delay-1"><span class="exp-num">05</span><div class="exp-icon">🐘</div><h3 class="exp-title">Wildlife Safari</h3><p class="exp-desc">Kanha, Bandhavgarh, Ranthambore — spot tigers.</p></div>
+    <div class="exp-card reveal reveal-delay-2"><span class="exp-num">06</span><div class="exp-icon">🏢</div><h3 class="exp-title">Corporate & School Trips</h3><p class="exp-desc">Company outings, team tours, school excursions.</p></div>
+  </div>
+</section>
+
+<section class="packages" id="packages">
+  <div class="section-label reveal">Exclusive Packages</div>
+  <h2 class="section-title reveal">Our <em>Signature Tours</em></h2>
+  <div class="pkg-grid">
+    <div class="pkg-card reveal">
+      <div class="pkg-tag">Popular</div>
+      <div class="pkg-name">Golden Triangle</div>
+      <div class="pkg-duration"></div>
+      <ul class="pkg-highlights"><li>Delhi → Agra → Jaipur</li><li>Taj Mahal, Amer Fort</li><li>Private Vehicle + Stay</li></ul>
+      <div class="pkg-enquire-note">Prices on request</div>
+      <a class="fleet-enquire" onclick="sendPackageEnquiry('Golden Triangle')">Book Package →</a>
+    </div>
+    <div class="pkg-card featured reveal reveal-delay-1">
+      <div class="pkg-tag">Most Loved</div>
+      <div class="pkg-name">Char Dham Yatra</div>
+      <div class="pkg-duration"></div>
+      <ul class="pkg-highlights"><li>Yamunotri · Gangotri</li><li>Kedarnath · Badrinath</li><li>Religious Driver + Support</li></ul>
+      <div class="pkg-enquire-note">Customizable dates</div>
+      <a class="fleet-enquire" onclick="sendPackageEnquiry('Char Dham Yatra')">Book Now →</a>
+    </div>
+    <div class="pkg-card reveal reveal-delay-2">
+      <div class="pkg-tag">Wilderness</div>
+      <div class="pkg-name">MP Wildlife Safari</div>
+      <div class="pkg-duration"></div>
+      <ul class="pkg-highlights"><li>Kanha & Bandhavgarh</li><li>Jungle Safari Included</li><li>AC Resort Stay</li></ul>
+      <div class="pkg-enquire-note">Family packages</div>
+      <a class="fleet-enquire" onclick="sendPackageEnquiry('MP Wildlife Safari')">Enquire →</a>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="section-label reveal">What They Say</div>
+  <h2 class="section-title reveal">Our <em>Happy Travelers</em></h2>
+  <div class="test-grid">
+    <div class="test-card reveal"><div class="test-quote">"</div><p class="test-text">Rajput Tours made our honeymoon unforgettable. Dzire to Udaipur — everything was perfect.</p><div class="test-author"><div class="test-avatar">AK</div><div><div class="test-name">Aditya & Kavya</div><div class="test-loc">Indore, MP</div><div class="test-stars">★★★★★</div></div></div></div>
+    <div class="test-card reveal reveal-delay-1"><div class="test-quote">"</div><p class="test-text">Group of 20 people. 23-seater for Char Dham — driver was excellent, route halts perfect.</p><div class="test-author"><div class="test-avatar">RS</div><div><div class="test-name">Rajesh Singhania</div><div class="test-loc">Bhopal, MP</div><div class="test-stars">★★★★★</div></div></div></div>
+    <div class="test-card reveal"><div class="test-quote">"</div><p class="test-text">Office trip with 15 people. 17-seater, clean and AC worked perfectly. Whole Goa trip in one vehicle!</p><div class="test-author"><div class="test-avatar">PM</div><div><div class="test-name">Priya Mehta</div><div class="test-loc">Indore, MP</div><div class="test-stars">★★★★★</div></div></div></div>
+    <div class="test-card reveal reveal-delay-1"><div class="test-quote">"</div><p class="test-text">School picnic with 13-seater. Safe and professional driver. Parents trusted them completely.</p><div class="test-author"><div class="test-avatar">VJ</div><div><div class="test-name">Vikrant Joshi</div><div class="test-loc">Ujjain, MP</div><div class="test-stars">★★★★★</div></div></div></div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="why-left">
+    <div class="section-label">Why Choose Us</div>
+    <h2 class="section-title">The <em>Rajput</em> Promise</h2>
+    <p>For 18 years, we've earned the trust of people across Madhya Pradesh. Our own vehicles, trained drivers, and all-India service. Your journey is our responsibility.</p>
+  </div>
+  <div class="why-features">
+    <div class="why-feat"><div class="why-feat-icon">🚗</div><div><div class="why-feat-title">Our Own Vehicles</div><div class="why-feat-desc">No third-party — we own our Dzire, Ertiga, Cruiser, and all Travellers.</div></div></div>
+    <div class="why-feat"><div class="why-feat-icon">🛡️</div><div><div class="why-feat-title">Safe & Verified Drivers</div><div class="why-feat-desc">All drivers verified, licensed, experienced. Your safety priority.</div></div></div>
+    <div class="why-feat"><div class="why-feat-icon">📞</div><div><div class="why-feat-title">24/7 On-Trip Support</div><div class="why-feat-desc">Call anytime during journey — always available.</div></div></div>
+    <div class="why-feat"><div class="why-feat-icon">✂️</div><div><div class="why-feat-title">Fully Customised Plan</div><div class="why-feat-desc">Your dates, route, group size — planned your way.</div></div></div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div>
+    <div class="section-label reveal">Talk To Us</div>
+    <h2 class="section-title reveal" style="margin-bottom:2.5rem;">Plan Your <em>Next Journey</em></h2>
+    <div class="contact-info-item reveal"><div class="contact-info-icon">📍</div><div><div class="contact-info-label">Address</div><div class="contact-info-val">Mohad, Dist.<br>Burhanpur, Madhya Pradesh — 450445</div></div></div>
+    <div class="contact-info-item reveal reveal-delay-1"><div class="contact-info-icon">📞</div><div><div class="contact-info-label">Phone / WhatsApp</div><div class="contact-info-val">+91 78697 98018<br>+91 91310 02702</div></div></div>
+    <div class="contact-info-item reveal reveal-delay-2"><div class="contact-info-icon">✉️</div><div><div class="contact-info-label">Email</div><div class="contact-info-val">info@rajputtours.in</div></div></div>
+    <div class="contact-info-item reveal"><div class="contact-info-icon">🕐</div><div><div class="contact-info-label">Office Hours</div><div class="contact-info-val">Mon–Sat: 9:00 AM – 7:00 PM<br>Sunday: 10:00 AM – 4:00 PM</div></div></div>
+  </div>
+  <div>
+    <div class="contact-form reveal">
+      <div class="form-row">
+        <div class="form-field"><label>Your Name</label><input type="text" id="rName"></div>
+        <div class="form-field"><label>Phone Number</label><input type="tel" id="rPhone"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>How Many People?</label>
+          <select id="rPeople">
+            <option>1–2 People (Dzire)</option>
+            <option>3–6 People (Ertiga)</option>
+            <option>7–10 People (Cruiser)</option>
+            <option>11–13 People (13 Seater)</option>
+            <option>14–17 People (17 Seater)</option>
+            <option>18–23 People (23 Seater)</option>
+          </select>
+        </div>
+        <div class="form-field"><label>Which Vehicle?</label>
+          <select id="rVehicle">
+            <option>Swift Dzire</option>
+            <option>Maruti Ertiga</option>
+            <option>Toofan Cruiser</option>
+            <option>13 Seater Traveller</option>
+            <option>17 Seater Traveller</option>
+            <option>23 Seater Traveller</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-field"><label>Travel Date</label><input type="date" id="rDate"></div>
+        <div class="form-field"><label>Destination</label><input type="text" id="rDest"></div>
+      </div>
+      <div class="form-field"><label>Anything else?</label><textarea id="rMsg"></textarea></div>
+      <button class="form-submit" onclick="sendEnquiry()">Send Enquiry — We'll Call You →</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-top">
+    <div><span class="footer-logo">Rajput Tours & Travels</span><p class="footer-desc">From Burhanpur to all of India — with our own vehicles and trusted drivers. Your journey, our responsibility.</p></div>
+    <div class="footer-col"><h4>Our Fleet</h4><ul><li><a href="#">Swift Dzire</a></li><li><a href="#">Maruti Ertiga</a></li><li><a href="#">Toofan Cruiser</a></li><li><a href="#">13 Seater Traveller</a></li><li><a href="#">17 Seater Traveller</a></li><li><a href="#">23 Seater Traveller</a></li></ul></div>
+    <div class="footer-col"><h4>Popular Tours</h4><ul><li><a href="#">Rajasthan Tour</a></li><li><a href="#">Char Dham Yatra</a></li><li><a href="#">Golden Triangle</a></li><li><a href="#">Goa Package</a></li><li><a href="#">MP Darshan</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Our Fleet</a></li><li><a href="#">Testimonials</a></li><li><a href="#">Contact</a></li></ul></div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Rajput Tours & Travels, Burhanpur · All India Tours · GST Registered</div>
+    <div class="footer-socials">
+      <a href="https://wa.me/917869798018" target="_blank" class="social-link" style="cursor:pointer!important">wa</a>
+    </div>
+  </div>
+</footer>
+
+<a class="wa-float" href="https://wa.me/917869798018?text=Hello! I want to book a tour with Rajput Tours." target="_blank">💬</a>
+
+<script>
+  /* ── Custom Cursor ── */
+  const cursor = document.getElementById('cursor'), ring = document.getElementById('cursor-ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cursor.style.left=mx+'px';cursor.style.top=my+'px';});
+  function animRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animRing);}
+  animRing();
+  document.querySelectorAll('a,button').forEach(el=>{
+    el.addEventListener('mouseenter',()=>{cursor.style.transform='translate(-50%,-50%) scale(2)';ring.style.transform='translate(-50%,-50%) scale(1.5)';});
+    el.addEventListener('mouseleave',()=>{cursor.style.transform='translate(-50%,-50%) scale(1)';ring.style.transform='translate(-50%,-50%) scale(1)';});
+  });
+
+  /* ── Navbar scroll ── */
+  const navbar=document.getElementById('navbar');
+  window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);});
+
+  /* ── Reveal on scroll ── */
+  const reveals=document.querySelectorAll('.reveal');
+  const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.12});
+  reveals.forEach(el=>obs.observe(el));
+
+  /* ── WhatsApp number ── */
+  const WA_NUMBER = '917869798018';
+
+  /* ── Main Contact Form Enquiry ── */
+  function sendEnquiry() {
+    const name   = document.getElementById('rName').value.trim();
+    const phone  = document.getElementById('rPhone').value.trim();
+    const people = document.getElementById('rPeople').value;
+    const vehicle= document.getElementById('rVehicle').value;
+    const date   = document.getElementById('rDate').value;
+    const dest   = document.getElementById('rDest').value.trim();
+    const msg    = document.getElementById('rMsg').value.trim();
+
+    if (!name || !phone) {
+      alert('Please enter your Name and Phone number.');
+      return;
+    }
+
+    const text =
+      `Hello! I want to book a tour with Rajput Tours & Travels.\n\n` +
+      `Name: ${name}\n` +
+      `Phone: ${phone}\n` +
+      `People: ${people}\n` +
+      `Vehicle: ${vehicle}\n` +
+      `Travel Date: ${date || 'Not provided'}\n` +
+      `Destination: ${dest || 'Not provided'}\n` +
+      `Message: ${msg || 'N/A'}`;
+
+    location.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+  }
+
+  /* ── Fleet Card Enquiry ── */
+  function sendFleetEnquiry(vehicleName) {
+    const text =
+      `Hello! I'm interested in booking the *${vehicleName}* from Rajput Tours & Travels.\n\n` +
+      `Please share availability and rates. Thank you!`;
+    location.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+  }
+
+  /* ── Package Enquiry ── */
+  function sendPackageEnquiry(packageName) {
+    const text =
+      `Hello! I'm interested in the *${packageName}* package from Rajput Tours & Travels.\n\n` +
+      `Please share details and pricing. Thank you!`;
+    location.href = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(text);
+  }
+</script>
+</body>
+</html>
